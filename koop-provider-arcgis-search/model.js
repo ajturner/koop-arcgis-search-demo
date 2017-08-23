@@ -117,7 +117,8 @@ Model.prototype.getData = function (req, callback) {
           name: "ArcGIS Search", // Get the workbook name before ! symbol and set as layer name
           description: 'Search content in ArcGIS Online',
           displayField: 'title',
-          fields: _fieldDictionary
+          fields: _fieldDictionary,
+          geometryType: 'Polygon'
         }
         // hand off the data to Koop
         callback(null, geojson)
