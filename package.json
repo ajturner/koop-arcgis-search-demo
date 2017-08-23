@@ -1,0 +1,16 @@
+{
+  "name": "arcgis-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Turner <aturner@esri.com>",
+  "license": "ISC",
+  "dependencies": {
+    "aws-serverless-express": "^3.0.2",
+    "featureserver": "^2.4.1",
+    "koop": "^3.5.2"
+  }
+}

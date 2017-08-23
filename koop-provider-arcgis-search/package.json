@@ -1,0 +1,39 @@
+{
+  "name": "koop-provider-portal-search",
+  "version": "1.0.0",
+  "description": "A sample provider for koop",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "standard && tape test/*.js | tap-spec"
+  },
+  "dependencies": {
+    "config": "^1.25.1",
+    "koop": "^3.4.0",
+    "request-promise": "^4.2.1"
+  },
+  "author": "Daniel Fenton",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "nock": "^9.0.2",
+    "standard": "^10.0.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koopjs/koop-provider-portal-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koopjs/koop-provider-portal-search/issues"
+  },
+  "homepage": "https://github.com/koopjs/koop-provider-portal-search",
+  "keywords": [
+    "koop",
+    "provider",
+    "sample"
+  ]
+}
