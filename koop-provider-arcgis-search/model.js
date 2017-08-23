@@ -16,7 +16,7 @@ const _fieldDictionary = [ { "name": "id", "type": "esriFieldTypeString", "alias
 { "name": "name", "type": "esriFieldTypeString", "alias": "name", "length": null, "editable": false, "nullable": true, "domain": null },
 { "name": "title", "type": "esriFieldTypeString", "alias": "title", "length": null, "editable": false, "nullable": true, "domain": null },
 { "name": "type", "type": "esriFieldTypeString", "alias": "type", "length": null, "editable": false, "nullable": true, "domain": null },
-{ "name": "typeKeywords", "type": "esriFieldTypeString", "alias": "typeKeywords", "length": null, "editable": false, "nullable": true, "domain": null },
+{ "name": "typekeywords", "type": "esriFieldTypeString", "alias": "typeKeywords", "length": null, "editable": false, "nullable": true, "domain": null },
 { "name": "description", "type": "esriFieldTypeString", "alias": "description", "length": null, "editable": false, "nullable": true, "domain": null },
 { "name": "tags", "type": "esriFieldTypeString", "alias": "tags", "length": null, "editable": false, "nullable": true, "domain": null },
 { "name": "snippet", "type": "esriFieldTypeString", "alias": "snippet", "length": null, "editable": false, "nullable": true, "domain": null },
@@ -66,7 +66,9 @@ function serializeQueryParams(params) {
 Model.prototype.getData = function (req, callback) {
   const portal = "http://www.arcgis.com/sharing/rest/search"
   let query = {f: 'json'}
-  query.q = req.query.where || '*'
+
+  // TODO: ensure appropriate quotes for Search in Online
+  query.q = (req.query.where || '*').replace(/\s+=\s+/g,':').replace(/'/g,'"')
 
   query.num = req.query.resultRecordCount || 5000
   query.start = req.query.resultOffset || 1
@@ -112,8 +114,8 @@ Model.prototype.getData = function (req, callback) {
         geojson.filtersApplied = { where: true }
 
         geojson.metadata = {
-          name: "Search", // Get the workbook name before ! symbol and set as layer name
-          description: 'Collaborate in Google docs, analyse in ArcGIS',
+          name: "ArcGIS Search", // Get the workbook name before ! symbol and set as layer name
+          description: 'Search content in ArcGIS Online',
           displayField: 'title',
           fields: _fieldDictionary
         }
@@ -141,9 +143,9 @@ function formatFeature (input) {
     input.extent = [[0,0], [1,1]]
   }
   ring.push([input.extent[0][0], input.extent[0][1]])
-  ring.push([input.extent[0][0], input.extent[1][1]])
-  ring.push([input.extent[1][0], input.extent[1][1]])
   ring.push([input.extent[1][0], input.extent[0][1]])
+  ring.push([input.extent[1][0], input.extent[1][1]])
+  ring.push([input.extent[0][0], input.extent[1][1]])
   ring.push([input.extent[0][0], input.extent[0][1]])
 
   const feature = {
