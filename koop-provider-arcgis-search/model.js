@@ -84,9 +84,10 @@ Model.prototype.getData = function (req, callback) {
   const requests = []
   requests.push(request(url))
 
+  console.log("compare", [query.num, _maxPageSize])
   // Multiple pages
-  while(req.query.resultRecordCount > _maxPageSize
-        && query.start < req.query.resultRecordCount) {
+  while(query.num > _maxPageSize
+        && query.start < query.num) {
     query.start = parseInt(query.start) + _maxPageSize
     console.log("Query", `${portal}?${serializeQueryParams(query)}`)
     requests.push(request(`${portal}?${serializeQueryParams(query)}`))

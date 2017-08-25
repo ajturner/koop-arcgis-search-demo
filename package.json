@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-serverless-express": "^3.0.2",
-    "featureserver": "^2.4.1",
+    "featureserver": "^2.4.3",
     "koop": "^3.5.2",
     "request-promise": "^4.2.1"
   }
