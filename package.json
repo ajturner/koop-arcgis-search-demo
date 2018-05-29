@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Andrew Turner <aturner@esri.com>",
   "license": "ISC",
   "dependencies": {
     "aws-serverless-express": "^3.0.2",
-    "featureserver": "^2.4.3",
-    "koop": "^3.5.2",
+    "koop": "^3.7.0",
     "request-promise": "^4.2.1"
   }
 }
